@@ -8,36 +8,36 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 
 const dorkTemplates = [
   {
-    title: "Find PDF Files",
-    description: "Search for PDF documents on a specific site",
+    title: "Cari File PDF",
+    description: "Mencari dokumen PDF di situs tertentu",
     query: 'site:example.com filetype:pdf',
   },
   {
-    title: "Exposed Directories",
-    description: "Find exposed directory listings",
+    title: "Direktori Terbuka",
+    description: "Menemukan daftar direktori yang terbuka",
     query: 'intitle:"index of" "parent directory"',
   },
   {
-    title: "Config Files",
-    description: "Search for configuration files",
+    title: "File Konfigurasi",
+    description: "Mencari file konfigurasi",
     query: 'filetype:conf OR filetype:config OR filetype:env',
   },
   {
-    title: "Login Pages",
-    description: "Find login portals",
+    title: "Halaman Login",
+    description: "Menemukan portal login",
     query: 'inurl:login OR inurl:signin OR inurl:admin',
   },
 ];
 
 const operators = [
-  { operator: "site:", description: "Limit search to specific domain" },
-  { operator: "filetype:", description: "Search for specific file types" },
-  { operator: "inurl:", description: "Search in URL" },
-  { operator: "intitle:", description: "Search in page title" },
-  { operator: "intext:", description: "Search in page text" },
-  { operator: "-", description: "Exclude terms" },
-  { operator: "OR", description: "Match either term" },
-  { operator: "\"\"", description: "Exact match" },
+  { operator: "site:", description: "Membatasi pencarian ke domain tertentu" },
+  { operator: "filetype:", description: "Mencari tipe file tertentu" },
+  { operator: "inurl:", description: "Mencari di URL" },
+  { operator: "intitle:", description: "Mencari di judul halaman" },
+  { operator: "intext:", description: "Mencari di teks halaman" },
+  { operator: "-", description: "Mengecualikan istilah" },
+  { operator: "OR", description: "Cocok dengan salah satu istilah" },
+  { operator: "\"\"", description: "Pencarian kata persis" },
 ];
 
 const Index = () => {
@@ -50,8 +50,8 @@ const Index = () => {
     window.open(searchUrl, '_blank');
     
     toast({
-      title: "Search executed",
-      description: "Opening Google search in a new tab",
+      title: "Pencarian dijalankan",
+      description: "Membuka pencarian Google di tab baru",
     });
   };
 
@@ -72,10 +72,10 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-8 px-4">
       <div className="max-w-4xl mx-auto space-y-8">
         <div className="text-center space-y-4 animate-fade-in">
-          <h1 className="text-4xl font-bold text-gray-900">Google Dorking Tools</h1>
+          <h1 className="text-4xl font-bold text-gray-900">Alat Google Dorking</h1>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Build advanced Google search queries with our easy-to-use dorking tools.
-            Select operators, use templates, or create your own custom searches.
+            Buat kueri pencarian Google tingkat lanjut dengan alat dorking kami yang mudah digunakan.
+            Pilih operator, gunakan template, atau buat pencarian kustom Anda sendiri.
           </p>
         </div>
 
@@ -83,7 +83,7 @@ const Index = () => {
           <SearchBuilder onSearch={handleSearch} />
           
           <div className="space-y-2">
-            <h2 className="text-sm font-medium text-gray-700">Operators</h2>
+            <h2 className="text-sm font-medium text-gray-700">Operator</h2>
             <div className="flex flex-wrap gap-2">
               {operators.map((op) => (
                 <OperatorChip
@@ -98,7 +98,7 @@ const Index = () => {
         </div>
 
         <div className="space-y-4">
-          <h2 className="text-xl font-semibold text-gray-900">Common Templates</h2>
+          <h2 className="text-xl font-semibold text-gray-900">Template Umum</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {dorkTemplates.map((template) => (
               <DorkTemplate
@@ -112,7 +112,7 @@ const Index = () => {
 
         {searchHistory.length > 0 && (
           <div className="space-y-4">
-            <h2 className="text-xl font-semibold text-gray-900">Search History</h2>
+            <h2 className="text-xl font-semibold text-gray-900">Riwayat Pencarian</h2>
             <ScrollArea className="h-40 rounded-md border p-4">
               {searchHistory.map((query, index) => (
                 <div

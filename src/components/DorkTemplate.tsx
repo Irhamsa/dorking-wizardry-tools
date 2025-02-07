@@ -17,8 +17,8 @@ export const DorkTemplate = ({ title, description, query, onSelect }: DorkTempla
   const copyToClipboard = () => {
     navigator.clipboard.writeText(query);
     toast({
-      title: "Copied to clipboard",
-      description: "The dork query has been copied to your clipboard.",
+      title: "Disalin ke clipboard",
+      description: "Kueri dork telah disalin ke clipboard Anda.",
     });
   };
 
@@ -44,7 +44,7 @@ export const DorkTemplate = ({ title, description, query, onSelect }: DorkTempla
         variant="outline"
         className="w-full hover:bg-gray-100 transition-colors"
       >
-        Use Template
+        Gunakan Template
       </Button>
     </Card>
   );
