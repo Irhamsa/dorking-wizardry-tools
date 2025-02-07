@@ -5,6 +5,9 @@ import { DorkTemplate } from "@/components/DorkTemplate";
 import { OperatorChip } from "@/components/OperatorChip";
 import { useToast } from "@/components/ui/use-toast";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { Book, Trash2 } from "lucide-react";
 
 const dorkTemplates = [
   {
@@ -35,8 +38,16 @@ const operators = [
   { operator: "inurl:", description: "Mencari di URL" },
   { operator: "intitle:", description: "Mencari di judul halaman" },
   { operator: "intext:", description: "Mencari di teks halaman" },
+  { operator: "cache:", description: "Melihat versi cache halaman" },
+  { operator: "ext:", description: "Mencari ekstensi file tertentu" },
+  { operator: "related:", description: "Mencari situs terkait" },
+  { operator: "info:", description: "Informasi tentang URL" },
+  { operator: "define:", description: "Mencari definisi" },
+  { operator: "before:", description: "Sebelum tanggal tertentu" },
+  { operator: "after:", description: "Setelah tanggal tertentu" },
   { operator: "-", description: "Mengecualikan istilah" },
   { operator: "OR", description: "Cocok dengan salah satu istilah" },
+  { operator: "AND", description: "Harus mengandung semua istilah" },
   { operator: "\"\"", description: "Pencarian kata persis" },
 ];
 
@@ -68,11 +79,27 @@ const Index = () => {
     }
   };
 
+  const clearHistory = () => {
+    setSearchHistory([]);
+    toast({
+      title: "Riwayat dibersihkan",
+      description: "Semua riwayat pencarian telah dihapus",
+    });
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-8 px-4">
       <div className="max-w-4xl mx-auto space-y-8">
         <div className="text-center space-y-4 animate-fade-in">
-          <h1 className="text-4xl font-bold text-gray-900">Alat Google Dorking</h1>
+          <div className="flex justify-center items-center gap-4">
+            <h1 className="text-4xl font-bold text-gray-900">Alat Google Dorking</h1>
+            <Link to="/documentation">
+              <Button variant="outline" className="flex items-center gap-2">
+                <Book className="h-4 w-4" />
+                Dokumentasi
+              </Button>
+            </Link>
+          </div>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Buat kueri pencarian Google tingkat lanjut dengan alat dorking kami yang mudah digunakan.
             Pilih operator, gunakan template, atau buat pencarian kustom Anda sendiri.
@@ -112,7 +139,17 @@ const Index = () => {
 
         {searchHistory.length > 0 && (
           <div className="space-y-4">
-            <h2 className="text-xl font-semibold text-gray-900">Riwayat Pencarian</h2>
+            <div className="flex justify-between items-center">
+              <h2 className="text-xl font-semibold text-gray-900">Riwayat Pencarian</h2>
+              <Button
+                variant="outline"
+                onClick={clearHistory}
+                className="flex items-center gap-2"
+              >
+                <Trash2 className="h-4 w-4" />
+                Bersihkan Riwayat
+              </Button>
+            </div>
             <ScrollArea className="h-40 rounded-md border p-4">
               {searchHistory.map((query, index) => (
                 <div
