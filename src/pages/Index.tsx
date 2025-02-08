@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { SearchBuilder } from "@/components/SearchBuilder";
 import { DorkTemplate } from "@/components/DorkTemplate";
@@ -6,7 +7,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Book, Download, Trash2 } from "lucide-react";
+import { Book, Trash2 } from "lucide-react";
 
 const dorkTemplates = [
   {
@@ -86,33 +87,6 @@ const Index = () => {
     });
   };
 
-  const handleDownload = () => {
-    const content = {
-      dorkTemplates,
-      operators,
-      searchHistory
-    };
-
-    const blob = new Blob([JSON.stringify(content, null, 2)], { type: 'application/json' });
-    
-    const url = URL.createObjectURL(blob);
-    
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'google-dorking-tool.json';
-    
-    document.body.appendChild(a);
-    a.click();
-    
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-
-    toast({
-      title: "File diunduh",
-      description: "Data telah berhasil diunduh ke perangkat Anda",
-    });
-  };
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-background/80 py-8 px-4">
       <div className="max-w-4xl mx-auto space-y-8">
@@ -125,14 +99,6 @@ const Index = () => {
                 Dokumentasi
               </Button>
             </Link>
-            <Button
-              variant="outline"
-              onClick={handleDownload}
-              className="flex items-center gap-2"
-            >
-              <Download className="h-4 w-4" />
-              Unduh Project
-            </Button>
           </div>
           <p className="text-muted-foreground dark:text-gray-300 max-w-2xl mx-auto">
             Buat kueri pencarian Google tingkat lanjut dengan alat dorking kami yang mudah digunakan.
