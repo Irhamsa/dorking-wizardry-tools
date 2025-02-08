@@ -23,9 +23,9 @@ export const DorkTemplate = ({ title, description, query, onSelect }: DorkTempla
   };
 
   return (
-    <Card className="p-4 backdrop-blur-sm bg-white/30 hover:bg-white/40 transition-all duration-300 border border-gray-200 group animate-slide-in">
+    <Card className="p-4 backdrop-blur-sm bg-white/30 dark:bg-black/30 hover:bg-white/40 dark:hover:bg-black/40 transition-all duration-300 border border-border group animate-slide-in">
       <div className="flex justify-between items-start mb-2">
-        <h3 className="font-semibold text-gray-900">{title}</h3>
+        <h3 className="font-semibold text-foreground dark:text-white">{title}</h3>
         <Button
           variant="ghost"
           size="icon"
@@ -35,14 +35,14 @@ export const DorkTemplate = ({ title, description, query, onSelect }: DorkTempla
           <Copy className="h-4 w-4" />
         </Button>
       </div>
-      <p className="text-sm text-gray-600 mb-3">{description}</p>
-      <code className="block p-2 bg-gray-100 rounded text-sm mb-3 overflow-x-auto">
+      <p className="text-sm text-muted-foreground dark:text-gray-300 mb-3">{description}</p>
+      <code className="block p-2 bg-muted dark:bg-black/50 rounded text-sm mb-3 overflow-x-auto text-foreground dark:text-gray-200">
         {query}
       </code>
       <Button
         onClick={() => onSelect(query)}
         variant="outline"
-        className="w-full hover:bg-gray-100 transition-colors"
+        className="w-full hover:bg-accent dark:hover:bg-accent/20 transition-colors"
       >
         Gunakan Template
       </Button>

@@ -22,7 +22,7 @@ export const OperatorChip = ({ operator, description, onClick }: OperatorChipPro
           variant="outline"
           size="sm"
           onClick={() => onClick(operator)}
-          className="px-3 py-1 rounded-full hover:bg-gray-100 transition-colors"
+          className="px-3 py-1 rounded-full hover:bg-accent dark:hover:bg-accent/20 transition-colors text-foreground dark:text-gray-200"
         >
           {operator}
         </Button>
@@ -32,7 +32,7 @@ export const OperatorChip = ({ operator, description, onClick }: OperatorChipPro
               <HelpCircle className="h-4 w-4" />
             </Button>
           </TooltipTrigger>
-          <TooltipContent>
+          <TooltipContent className="bg-popover dark:bg-popover/90 text-popover-foreground">
             <p>{description}</p>
           </TooltipContent>
         </Tooltip>
