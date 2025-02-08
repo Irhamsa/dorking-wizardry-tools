@@ -88,11 +88,11 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-8 px-4">
+    <div className="min-h-screen bg-gradient-to-b from-background to-background/80 py-8 px-4">
       <div className="max-w-4xl mx-auto space-y-8">
         <div className="text-center space-y-4 animate-fade-in">
           <div className="flex justify-center items-center gap-4">
-            <h1 className="text-4xl font-bold text-gray-900">Alat Google Dorking</h1>
+            <h1 className="text-4xl font-bold text-foreground dark:text-white">Alat Google Dorking</h1>
             <Link to="/documentation">
               <Button variant="outline" className="flex items-center gap-2">
                 <Book className="h-4 w-4" />
@@ -100,17 +100,17 @@ const Index = () => {
               </Button>
             </Link>
           </div>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-muted-foreground dark:text-gray-300 max-w-2xl mx-auto">
             Buat kueri pencarian Google tingkat lanjut dengan alat dorking kami yang mudah digunakan.
             Pilih operator, gunakan template, atau buat pencarian kustom Anda sendiri.
           </p>
         </div>
 
-        <div className="bg-white/50 backdrop-blur-sm p-6 rounded-lg border border-gray-200 shadow-sm space-y-6">
+        <div className="bg-card/50 dark:bg-card/30 backdrop-blur-sm p-6 rounded-lg border border-border shadow-sm space-y-6">
           <SearchBuilder onSearch={handleSearch} />
           
           <div className="space-y-2">
-            <h2 className="text-sm font-medium text-gray-700">Operator</h2>
+            <h2 className="text-sm font-medium text-foreground dark:text-white">Operator</h2>
             <div className="flex flex-wrap gap-2">
               {operators.map((op) => (
                 <OperatorChip
@@ -125,7 +125,7 @@ const Index = () => {
         </div>
 
         <div className="space-y-4">
-          <h2 className="text-xl font-semibold text-gray-900">Template Umum</h2>
+          <h2 className="text-xl font-semibold text-foreground dark:text-white">Template Umum</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {dorkTemplates.map((template) => (
               <DorkTemplate
@@ -140,7 +140,7 @@ const Index = () => {
         {searchHistory.length > 0 && (
           <div className="space-y-4">
             <div className="flex justify-between items-center">
-              <h2 className="text-xl font-semibold text-gray-900">Riwayat Pencarian</h2>
+              <h2 className="text-xl font-semibold text-foreground dark:text-white">Riwayat Pencarian</h2>
               <Button
                 variant="outline"
                 onClick={clearHistory}
@@ -150,11 +150,11 @@ const Index = () => {
                 Bersihkan Riwayat
               </Button>
             </div>
-            <ScrollArea className="h-40 rounded-md border p-4">
+            <ScrollArea className="h-40 rounded-md border p-4 bg-card/50 dark:bg-card/30">
               {searchHistory.map((query, index) => (
                 <div
                   key={index}
-                  className="py-2 px-3 hover:bg-gray-100 rounded-md cursor-pointer transition-colors"
+                  className="py-2 px-3 hover:bg-accent dark:hover:bg-accent/20 rounded-md cursor-pointer transition-colors text-foreground dark:text-gray-200"
                   onClick={() => handleSearch(query)}
                 >
                   {query}
