@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { SearchBuilder } from "@/components/SearchBuilder";
 import { DorkTemplate } from "@/components/DorkTemplate";
@@ -49,6 +48,15 @@ const operators = [
   { operator: "OR", description: "Cocok dengan salah satu istilah" },
   { operator: "AND", description: "Harus mengandung semua istilah" },
   { operator: "\"\"", description: "Pencarian kata persis" },
+  { operator: "allinurl:", description: "Mencari halaman dengan semua kata kunci di URL" },
+  { operator: "allintitle:", description: "Mencari halaman dengan semua kata kunci di judul" },
+  { operator: "allintext:", description: "Mencari halaman dengan semua kata kunci di teks" },
+  { operator: "AROUND(n)", description: "Mencari kata yang berjarak n kata dari kata lain" },
+  { operator: "source:", description: "Mencari dari sumber berita tertentu" },
+  { operator: "location:", description: "Mencari berdasarkan lokasi" },
+  { operator: "$", description: "Mencari harga/angka" },
+  { operator: "..", description: "Mencari range angka (contoh: 100..200)" },
+  { operator: "@", description: "Mencari di media sosial" }
 ];
 
 const Index = () => {

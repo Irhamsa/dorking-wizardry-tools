@@ -142,6 +142,52 @@ const operatorExplanations = [
     explanation: "Mengecualikan kata kunci dari hasil pencarian.",
     example: "keamanan -virus",
   },
+  // Operator baru
+  {
+    operator: "allinurl:",
+    explanation: "Mencari halaman yang memiliki semua kata kunci yang ditentukan dalam URL-nya.",
+    example: "allinurl:login admin panel",
+  },
+  {
+    operator: "allintitle:",
+    explanation: "Mencari halaman yang memiliki semua kata kunci yang ditentukan dalam judulnya.",
+    example: "allintitle:forum diskusi keamanan",
+  },
+  {
+    operator: "allintext:",
+    explanation: "Mencari halaman yang memiliki semua kata kunci yang ditentukan dalam kontennya.",
+    example: "allintext:tutorial keamanan jaringan",
+  },
+  {
+    operator: "AROUND(n)",
+    explanation: "Mencari kata yang berjarak n kata dari kata lain.",
+    example: 'cybersecurity AROUND(3) "data breach"',
+  },
+  {
+    operator: "source:",
+    explanation: "Mencari artikel dari sumber berita tertentu.",
+    example: "source:CNN cybersecurity",
+  },
+  {
+    operator: "location:",
+    explanation: "Mencari hasil berdasarkan lokasi tertentu.",
+    example: "location:jakarta restaurant",
+  },
+  {
+    operator: "$",
+    explanation: "Mencari harga atau angka dengan simbol mata uang.",
+    example: "$50..$100 product",
+  },
+  {
+    operator: "..",
+    explanation: "Mencari dalam rentang angka tertentu.",
+    example: "kamera 1000000..5000000",
+  },
+  {
+    operator: "@",
+    explanation: "Mencari di media sosial atau email.",
+    example: "@twitter cybersecurity",
+  },
 ];
 
 export default Documentation;
