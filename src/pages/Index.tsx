@@ -96,90 +96,87 @@ const Index = () => {
   };
 
   return (
-    <>
-      <div className="animated-background" />
-      <div className="min-h-screen bg-gradient-to-b from-background/30 to-background/50 backdrop-blur-[2px] py-8 px-4">
-        <div className="max-w-4xl mx-auto space-y-8">
-          <div className="text-center space-y-4 animate-fade-in">
-            <div className="flex justify-center items-center gap-4">
-              <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/80 animate-fade-in">
-                Alat Google Dorking
-              </h1>
-              <Link to="/documentation">
-                <Button variant="outline" className="flex items-center gap-2 transition-all duration-300 hover:scale-105">
-                  <Book className="h-4 w-4" />
-                  Dokumentasi
-                </Button>
-              </Link>
-            </div>
-            <p className="text-muted-foreground dark:text-gray-300 max-w-2xl mx-auto animate-fade-in">
-              Buat kueri pencarian Google tingkat lanjut dengan alat dorking kami yang mudah digunakan.
-              Pilih operator, gunakan template, atau buat pencarian kustom Anda sendiri.
-            </p>
+    <div className="min-h-screen bg-gradient-to-b from-background to-background/80 py-8 px-4">
+      <div className="max-w-4xl mx-auto space-y-8">
+        <div className="text-center space-y-4 animate-fade-in">
+          <div className="flex justify-center items-center gap-4">
+            <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/80 animate-fade-in">
+              Alat Google Dorking
+            </h1>
+            <Link to="/documentation">
+              <Button variant="outline" className="flex items-center gap-2 transition-all duration-300 hover:scale-105">
+                <Book className="h-4 w-4" />
+                Dokumentasi
+              </Button>
+            </Link>
           </div>
+          <p className="text-muted-foreground dark:text-gray-300 max-w-2xl mx-auto animate-fade-in">
+            Buat kueri pencarian Google tingkat lanjut dengan alat dorking kami yang mudah digunakan.
+            Pilih operator, gunakan template, atau buat pencarian kustom Anda sendiri.
+          </p>
+        </div>
 
-          <div className="bg-card/50 dark:bg-card/30 backdrop-blur-sm p-6 rounded-lg border border-border shadow-lg hover:shadow-xl transition-all duration-300 space-y-6 animate-fade-in">
-            <SearchBuilder onSearch={handleSearch} />
-            
-            <div className="space-y-2">
-              <h2 className="text-sm font-medium text-foreground dark:text-white">Operator</h2>
-              <div className="flex flex-wrap gap-2">
-                {operators.map((op) => (
-                  <OperatorChip
-                    key={op.operator}
-                    operator={op.operator}
-                    description={op.description}
-                    onClick={handleOperatorClick}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="space-y-4">
-            <h2 className="text-xl font-semibold text-foreground dark:text-white animate-fade-in">Template Umum</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {dorkTemplates.map((template, index) => (
-                <div key={template.title} style={{ animationDelay: `${index * 100}ms` }}>
-                  <DorkTemplate
-                    {...template}
-                    onSelect={handleSearch}
-                  />
-                </div>
+        <div className="bg-card/50 dark:bg-card/30 backdrop-blur-sm p-6 rounded-lg border border-border shadow-lg hover:shadow-xl transition-all duration-300 space-y-6 animate-fade-in">
+          <SearchBuilder onSearch={handleSearch} />
+          
+          <div className="space-y-2">
+            <h2 className="text-sm font-medium text-foreground dark:text-white">Operator</h2>
+            <div className="flex flex-wrap gap-2">
+              {operators.map((op) => (
+                <OperatorChip
+                  key={op.operator}
+                  operator={op.operator}
+                  description={op.description}
+                  onClick={handleOperatorClick}
+                />
               ))}
             </div>
           </div>
-
-          {searchHistory.length > 0 && (
-            <div className="space-y-4 animate-fade-in">
-              <div className="flex justify-between items-center">
-                <h2 className="text-xl font-semibold text-foreground dark:text-white">Riwayat Pencarian</h2>
-                <Button
-                  variant="outline"
-                  onClick={clearHistory}
-                  className="flex items-center gap-2 transition-all duration-300 hover:scale-105 hover:bg-destructive hover:text-destructive-foreground"
-                >
-                  <Trash2 className="h-4 w-4" />
-                  Bersihkan Riwayat
-                </Button>
-              </div>
-              <ScrollArea className="h-40 rounded-md border p-4 bg-card/50 dark:bg-card/30 backdrop-blur-sm">
-                {searchHistory.map((query, index) => (
-                  <div
-                    key={index}
-                    className="py-2 px-3 hover:bg-accent dark:hover:bg-accent/20 rounded-md cursor-pointer transition-all duration-300 text-foreground dark:text-gray-200 hover:translate-x-1"
-                    onClick={() => handleSearch(query)}
-                    style={{ animationDelay: `${index * 50}ms` }}
-                  >
-                    {query}
-                  </div>
-                ))}
-              </ScrollArea>
-            </div>
-          )}
         </div>
+
+        <div className="space-y-4">
+          <h2 className="text-xl font-semibold text-foreground dark:text-white animate-fade-in">Template Umum</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {dorkTemplates.map((template, index) => (
+              <div key={template.title} style={{ animationDelay: `${index * 100}ms` }}>
+                <DorkTemplate
+                  {...template}
+                  onSelect={handleSearch}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {searchHistory.length > 0 && (
+          <div className="space-y-4 animate-fade-in">
+            <div className="flex justify-between items-center">
+              <h2 className="text-xl font-semibold text-foreground dark:text-white">Riwayat Pencarian</h2>
+              <Button
+                variant="outline"
+                onClick={clearHistory}
+                className="flex items-center gap-2 transition-all duration-300 hover:scale-105 hover:bg-destructive hover:text-destructive-foreground"
+              >
+                <Trash2 className="h-4 w-4" />
+                Bersihkan Riwayat
+              </Button>
+            </div>
+            <ScrollArea className="h-40 rounded-md border p-4 bg-card/50 dark:bg-card/30 backdrop-blur-sm">
+              {searchHistory.map((query, index) => (
+                <div
+                  key={index}
+                  className="py-2 px-3 hover:bg-accent dark:hover:bg-accent/20 rounded-md cursor-pointer transition-all duration-300 text-foreground dark:text-gray-200 hover:translate-x-1"
+                  onClick={() => handleSearch(query)}
+                  style={{ animationDelay: `${index * 50}ms` }}
+                >
+                  {query}
+                </div>
+              ))}
+            </ScrollArea>
+          </div>
+        )}
       </div>
-    </>
+    </div>
   );
 };
 
